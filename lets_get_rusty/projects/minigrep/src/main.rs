@@ -1,9 +1,7 @@
 use minigrep::Config;
 use std::{env, process};
 fn main() {
-    let args: Vec<String> = env::args().collect();
-
-    let my_config = Config::new(&args).unwrap_or_else(|err| {
+    let mut my_config = Config::new(env::args()).unwrap_or_else(|err| {
         eprintln!("Problem parsing argumnts: {}", err);
         process::exit(-1);
     });
